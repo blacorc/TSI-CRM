@@ -500,7 +500,7 @@ function expandHtml(a, contacts) {
   const contactsHtml = contacts.length ? contacts.map(c => `
     <div class="contact-card">
       <div class="contact-card-left">
-        <div class="cn">${esc(c.name)} <span class="badge badge-claude">✦ Claude AI</span></div>
+        <div class="cn">${esc(c.name)} <span class="badge badge-claude">${c.source==='Outlook'?'📧 Outlook':'✦ Claude AI'}</span></div>
         <div class="ct">${esc(c.title)}</div>
       </div>
       <div class="contact-card-right">
@@ -543,7 +543,7 @@ function renderContacts() {
       <td style="color:var(--text2);font-size:12px">${esc(c.title)}</td>
       <td><span style="font-size:12px">${esc(c.company)}</span>${acct&&acct.oem?'<span class="badge badge-oem" style="margin-left:4px">🔩 OEM</span>':''}</td>
       <td><span class="badge badge-${health}">${health}</span></td>
-      <td><span class="badge badge-claude">✦ Claude AI</span></td>
+      <td><span class="badge badge-claude">${c.source==='Outlook'?'📧 Outlook':'✦ Claude AI'}</span></td>
       <td>
         ${c.email?`<a class="ic-btn" href="mailto:${c.email}" title="${c.email}">✉️</a>`:`<a class="ic-btn disabled" title="No email on file">✉️</a>`}
         ${(c.phone||c.directPhone||c.mobilePhone)?`<a class="ic-btn" href="tel:${c.phone||c.directPhone||c.mobilePhone}" title="${c.phone||c.directPhone||c.mobilePhone}">📞</a>`:`<a class="ic-btn disabled" title="No phone on file">📞</a>`}
